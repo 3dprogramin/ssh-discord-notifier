@@ -38,7 +38,7 @@ send_discord_message() {
 
     MESSAGE="**New SSH Login Alert**\n\n**User:** $USER\n**IP Address:** $IP\n**Location:** $LOCATION\n**Time:** $TIME\n**Hostname:** $HOSTNAME"
 
-    curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$MESSAGE\"}" $WEBHOOK_URL  > /dev/null 2>&1 &
+    curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$MESSAGE\"}" $WEBHOOK_URL > /dev/null 2>&1 &
     disown
 }
 
@@ -59,4 +59,4 @@ main() {
     fi
 }
 
-main &
+(main > /dev/null 2>&1 &)
